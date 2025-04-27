@@ -50,7 +50,7 @@ class CameraApp(QMainWindow):
 
         # Инициализация настроек приложения
         self.settings = QSettings("MyCompany", "SpectrometerApp")
-        self.current_settings = self._load_settings()
+        self.current_settings = self.DEFAULT_SETTINGS.copy()
 
         # Переменных состояния
         self.current_frame    = None       # текущий кадр
