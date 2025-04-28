@@ -15,20 +15,36 @@ except ImportError: # Fallback
 def setup_styles(parent):
     """Настройка стилей интерфейса"""
     parent.setStyleSheet("""                         
-        QMainWindow { background-color: #f0f0f0; }                             
+        QMainWindow { 
+            background-color: #f0f0f0; 
+        }                             
         QGroupBox {
-            font-size: 14px; font-weight: bold;         
-            border: 1px solid #aaa; border-radius: 5px;
-            margin-top: 10px; padding-top: 15px;
+            font-size: 14px; 
+            font-weight: bold;         
+            border: 1px solid #aaa; 
+            border-radius: 5px;
+            margin-top: 10px; 
+            padding-top: 15px;
         }
         QPushButton {                                    
-            min-width: 80px; min-height: 30px;
+            min-width: 80px; 
+            min-height: 30px;
             background-color: #e0e0e0;
-            border: 1px solid #aaa; border-radius: 4px; padding: 5px;
+            border: 1px solid #aaa; 
+            border-radius: 4px; 
+            padding: 5px;
         }
-        QPushButton:hover { background-color: #d0d0d0; }
-        QLabel { font-size: 13px; }                      
-        QLineEdit { border: 1px solid #aaa; border-radius: 3px; padding: 3px; }
+        QPushButton:hover { 
+            background-color: #d0d0d0; 
+        }
+        QLabel { 
+            font-size: 13px; 
+        }                      
+        QLineEdit { 
+            border: 1px solid #aaa; 
+            border-radius: 3px; 
+            padding: 3px; 
+        }
     """)
 
 def create_menu_bar(parent):
@@ -38,9 +54,18 @@ def create_menu_bar(parent):
 
     # установка стиля
     menubar.setStyleSheet("""
-        QMenuBar { background-color: #e0e0e0; padding: 5px; }
-        QMenuBar::item { padding: 5px 10px; background: transparent; border-radius: 4px; }
-        QMenuBar::item:selected { background: #c0c0c0; }
+        QMenuBar { 
+            background-color: #e0e0e0; 
+            padding: 5px; 
+        }
+        QMenuBar::item { 
+            padding: 5px 10px; 
+            background: transparent; 
+            border-radius: 4px; 
+        }
+        QMenuBar::item:selected { 
+            background: #c0c0c0; 
+        }
     """)
 
     """  Создание меню "Инструкция" """
