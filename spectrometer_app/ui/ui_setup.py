@@ -55,7 +55,7 @@ def create_menu_bar(parent):
     # установка стиля
     menubar.setStyleSheet("""
         QMenuBar { 
-            background-color: #e0e0e0; 
+            background-color: #f0f0f0; 
             padding: 5px; 
         }
         QMenuBar::item { 
