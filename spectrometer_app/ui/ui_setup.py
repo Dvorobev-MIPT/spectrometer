@@ -247,12 +247,24 @@ def setup_camera_controls(parent, layout):
 
 def set_window_icon(parent):
     """Установка иконки окна"""
-    
+
     # Путь к иконке
     icon_path = os.path.join(os.path.dirname(__file__), '../resources/icon.ico')
-    
+    print(f"DEBUG: Attempting to load icon from: {icon_path}") # Добавлено для отладки
+
     # Установка иконки
     if os.path.exists(icon_path):
-        parent.setWindowIcon(QIcon(icon_path))
+        print(f"DEBUG: Icon file found at: {icon_path}") # Добавлено для отладки
+        icon = QIcon(icon_path)
+
+        if icon.isNull():
+            # QIcon не смог загрузить данные из файла
+            print(f"ERROR: QIcon created from {icon_path} is null. Check file format/integrity.")
+        else:
+            # QIcon успешно создан, проверяем доступные размеры
+            print(f"INFO: QIcon loaded successfully. Available sizes: {icon.availableSizes()}")
+            parent.setWindowIcon(icon)
+            print("DEBUG: Window icon set.") # Добавлено для отладки
+            
     else:
         print(f"Warning: Icon file not found at {icon_path}")

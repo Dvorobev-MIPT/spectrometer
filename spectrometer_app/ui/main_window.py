@@ -154,14 +154,36 @@ class CameraApp(QMainWindow):
         
         self.camera_connected = False # Сброс флага подключения
 
-        # Отображение изображения "no_camera_image'
-        if hasattr(self.camera_thread, '../resources/no_camera_image.jpg') and hasattr(self, 'video_label'):
-            pixmap = QPixmap.fromImage(self.camera_thread.no_camera_image)
-            self.video_label.setPixmap(pixmap.scaled(
-                self.video_label.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation
-            ))
+        """
+        Проверяем, существует ли поток камеры и есть ли у него атрибут 
+        no_camera_image, а также существует ли виджет video_label
+        """
+        if hasattr(self, 'camera_thread') and self.camera_thread is not None and \
+           hasattr(self.camera_thread, 'no_camera_image') and \
+           self.camera_thread.no_camera_image is not None and \
+           not self.camera_thread.no_camera_image.isNull() and \
+           hasattr(self, 'video_label'):
+            
+            try:
+                pixmap = QPixmap.fromImage(self.camera_thread.no_camera_image)
+                self.video_label.setPixmap(pixmap.scaled(
+                    self.video_label.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation
+                ))
+                # Очищаем текст, если он был установлен ранее
+                self.video_label.setText("") 
+                
+            except Exception as e:
+                print(f"Error displaying placeholder image: {e}")
+                # Если произошла ошибка при отображении картинки, показываем текст
+                if hasattr(self, 'video_label'):
+                    self.video_label.setText("Ошибка отображения заглушки")
+
         elif hasattr(self, 'video_label'):
+            # Если условие выше не выполнено, просто устанавливаем текст
             self.video_label.setText("Камера не подключена")
+        
+        # Дополнительно выводим сообщение в консоль для отладки
+        print("Camera error handled. Placeholder image should be displayed if available.")
 
     """
     -------------------------
