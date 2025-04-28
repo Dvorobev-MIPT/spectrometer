@@ -249,7 +249,7 @@ def set_window_icon(parent):
     """Установка иконки окна"""
     
     # Путь к иконке
-    icon_path = os.path.join(os.path.dirname(__file__), '../resources/icon.png')
+    icon_path = os.path.join(os.path.dirname(__file__), '../resources/icon.ico')
     
     # Установка иконки
     if os.path.exists(icon_path):

@@ -50,7 +50,7 @@ class CameraApp(QMainWindow):
 
         # Инициализация настроек приложения
         self.settings = QSettings("MyCompany", "SpectrometerApp")
-        self.current_settings = self.DEFAULT_SETTINGS.copy()
+        self.current_settings = DEFAULT_SETTINGS.copy()
 
         # Переменных состояния
         self.current_frame    = None       # текущий кадр
@@ -155,7 +155,7 @@ class CameraApp(QMainWindow):
         self.camera_connected = False # Сброс флага подключения
 
         # Отображение изображения "no_camera_image'
-        if hasattr(self.camera_thread, '../resources/no_camera_image.png') and hasattr(self, 'video_label'):
+        if hasattr(self.camera_thread, '../resources/no_camera_image.jpg') and hasattr(self, 'video_label'):
             pixmap = QPixmap.fromImage(self.camera_thread.no_camera_image)
             self.video_label.setPixmap(pixmap.scaled(
                 self.video_label.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation
