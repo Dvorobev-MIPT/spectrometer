@@ -61,7 +61,7 @@ class CameraThread(QThread):
         """Загрузка изображения-заглушки для случая отсутствия камеры"""
 
         image         = QImage()
-        resource_path = os.path.join(os.path.dirname(__file__), '../../resources/no_camera.png')
+        resource_path = os.path.join(os.path.dirname(__file__), '../resources/no_camera_image.jpg')
 
         # Если заглушки нет, выводим белое изображение
         if os.path.exists(resource_path):

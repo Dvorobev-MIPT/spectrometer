@@ -249,7 +249,7 @@ def set_window_icon(parent):
     """Установка иконки окна"""
 
     # Путь к иконке
-    icon_path = os.path.join(os.path.dirname(__file__), '../resources/icon.ico')
+    icon_path = os.path.join(os.path.dirname(__file__), '../resources/icon.png')
     print(f"DEBUG: Attempting to load icon from: {icon_path}") # Добавлено для отладки
 
     # Установка иконки
