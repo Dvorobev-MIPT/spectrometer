@@ -99,7 +99,7 @@ def setup_video_panel(parent, main_layout):
     # Создание метки для отображения видео
     parent.video_label = QLabel()                   # сохраняем в родительском классе
     parent.video_label.setAlignment(Qt.AlignCenter) # выравнивание по центру
-    parent.video_label.setMinimumSize(740, 555)     # минимальный размер
+    parent.video_label.setMinimumSize(711, 530)     # минимальный размер
     video_layout.addWidget(parent.video_label)      # добавление в layout
 
     # Добавление в основной layout с коэффициентом растяжения
