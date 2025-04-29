@@ -60,7 +60,7 @@ Spectrometer подходит для учебных, лабораторных и
 
 Детальное описание компонентов каждого модуля представлено в следующей структуре:
 
-![alt text]([https://github.com/Dvorobev-MIPT/tg_bot/blob/main/images/start_help.png](https://github.com/Dvorobev-MIPT/spectrometer/blob/main/images/spectrometer_structure.png))
+![alt text](https://github.com/Dvorobev-MIPT/spectrometer/blob/main/images/spectrometer_structure.png)
 
 ---
 
