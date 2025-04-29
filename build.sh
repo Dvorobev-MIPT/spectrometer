@@ -9,6 +9,7 @@ APP_NAME="spectrometer"
 # Путь к иконке (должна быть .ico для Windows или .icns для macOS)
 ICON_FILE="./spectrometer_app/resources/icon.ico"
 
+# Папка для итоговой сборки
 OUT_DIR="programm"
 
 # Опция ускорения старта (распаковка во временную папку рядом с exe)
