@@ -47,7 +47,7 @@ class CameraApp(QMainWindow):
     def __init__(self):
         super().__init__()      # инициализация родительского класса
         self.setWindowTitle("Спектрометр")      # заголовок окна
-        self.setGeometry(100, 100, 1200, 600)   # размер и положение окна
+        self.setGeometry(100, 100, 1200, 590)   # размер и положение окна
 
         # Инициализация настроек приложения
         self.settings = QSettings("MyCompany", "SpectrometerApp")

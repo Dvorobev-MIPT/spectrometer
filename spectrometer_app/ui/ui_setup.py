@@ -130,10 +130,10 @@ def setup_snapshot_button(parent, layout):
     # Настройка стиля
     parent.snapshot_btn.setStyleSheet("""
         QPushButton {
-            background-color: #7FEB7F; color: white;
+            background-color: #4CAF50; color: white;
             font-weight: bold; min-height: 40px; font-size: 14px;
         }
-        QPushButton:hover { background-color: ##6AC46A; }
+        QPushButton:hover { background-color: ##45a049; }
     """)
 
     # Подключение обработчика
@@ -146,7 +146,7 @@ def setup_snapshot_button(parent, layout):
     parent.open_results_btn = QPushButton("Результаты")
     parent.open_results_btn.setStyleSheet("""
         QPushButton {
-            background-color: #e0e0e0; color: white;
+            background-color: #e0e0e0; color: black;
             font-weight: bold; min-height: 40px; font-size: 14px;
         }
         QPushButton:hover { background-color: #d0d0d0; }
