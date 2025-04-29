@@ -63,8 +63,8 @@ def show_settings_dialog(parent):
     # Создаем слайдер для яркости
     widgets['brightness_slider'] = QSlider(Qt.Horizontal)
 
-    # Устанавливаем диапазон значений слайдера (0-100)
-    widgets['brightness_slider'].setRange(0, 100)
+    # Устанавливаем диапазон значений слайдера (1, -1) [де-юре (-100, 100)]
+    widgets['brightness_slider'].setRange(-100, 100)
 
     # Устанавливаем текущее значение из настроек
     widgets['brightness_slider'].setValue(int(parent.current_settings['brightness'] * 100))
@@ -77,6 +77,7 @@ def show_settings_dialog(parent):
 
     # Подключаем сигнал изменения значения слайдера
     widgets['brightness_slider'].valueChanged.connect(lambda v, l=widgets['brightness_value']: l.setText(f"{v / 100.0:.2f}"))
+    layout.addWidget(brightness_group) 
 
     # Аналогичная настройка для контраста, насыщенности и резкости
     for key, name, max_val in [('contrast', 'Контраст', 2.0), 
@@ -142,7 +143,6 @@ def show_settings_dialog(parent):
     exposure_group.setLayout(exposure_layout)
 
     # Добавляем все группы в основной layout
-    layout.addWidget(brightness_group) 
     layout.addWidget(awb_group)
     layout.addWidget(exposure_group)
 
