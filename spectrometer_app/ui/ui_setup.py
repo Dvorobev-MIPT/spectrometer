@@ -143,13 +143,13 @@ def setup_snapshot_button(parent, layout):
     layout.addWidget(parent.snapshot_btn)
     
     # Создание кнопки открытия папки результатов
-    parent.open_results_btn = QPushButton("Открыть папку результатов")
+    parent.open_results_btn = QPushButton("Результаты")
     parent.open_results_btn.setStyleSheet("""
         QPushButton {
-            background-color: #3498db; color: white;
-            font-weight: bold; min-height: 35px; font-size: 13px;
+            background-color: #e0e0e0; color: white;
+            font-weight: bold; min-height: 40px; font-size: 14px;
         }
-        QPushButton:hover { background-color: #2980b9; }
+        QPushButton:hover { background-color: #d0d0d0; }
     """)
     
     # Подключение обработчика
