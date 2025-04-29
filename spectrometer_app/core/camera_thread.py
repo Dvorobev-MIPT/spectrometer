@@ -68,7 +68,7 @@ class CameraThread(QThread):
             image.load(resource_path)
         else:
             print(f"Warning: Placeholder image not found at {resource_path}")
-            image = QImage(800, 600, QImage.Format_RGB888)
+            image = QImage(711, 530, QImage.Format_RGB888)
             image.fill(Qt.white)
 
         return image

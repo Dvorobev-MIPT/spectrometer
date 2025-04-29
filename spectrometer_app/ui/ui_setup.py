@@ -160,12 +160,12 @@ def setup_snapshot_button(parent, layout):
 
 def setup_lens_controls(parent, layout):
     """Настройка управления позицией линз"""
-    lens_group = QGroupBox("Управление линзами")    # Группа для линз
+    lens_group = QGroupBox("Управление движением")    # Группа для линз
     lens_layout = QHBoxLayout()                     # Горизонтальный layout
     lens_layout.setSpacing(15)                      # Расстояние между элементами
 
     # Группа для линзы 1
-    lens1_group = QGroupBox("Линза 1")
+    lens1_group = QGroupBox("Линза")
     lens1_layout = QVBoxLayout()        # Вертикальный layout
     lens1_layout.setSpacing(8)
 
@@ -201,7 +201,7 @@ def setup_lens_controls(parent, layout):
     lens1_group.setLayout(lens1_layout)
 
     # Аналогичная настройка для линзы 2
-    lens2_group = QGroupBox("Линза 2")
+    lens2_group = QGroupBox("Камера")
     lens2_layout = QVBoxLayout()
     lens2_layout.setSpacing(8)
 

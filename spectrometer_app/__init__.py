@@ -4,7 +4,7 @@ Spectrometer Application
 Основной пакет для управления спектрометром на базе Raspberry Pi Camera.
 """
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 __author__ = "Vorobev Dmitri Alexandrovich"
 __email__ = "vorobev.da@phystech.edu"
 
