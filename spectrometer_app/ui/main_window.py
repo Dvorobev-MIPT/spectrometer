@@ -4,6 +4,7 @@ import sys
 import os
 import time
 import traceback 
+import subprocess
 from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QMessageBox
 from PyQt5.QtCore import Qt, QTimer, QSettings
 from PyQt5.QtGui import QPixmap
@@ -223,6 +224,23 @@ class CameraApp(QMainWindow):
 
     def take_and_save_snapshot(self):
         take_and_save_snapshot_standalone(self)
+        
+    def open_results_folder(self):
+        """Открывает папку с результатами в файловом менеджере"""
+        results_dir = os.path.abspath("./results")
+        if not os.path.exists(results_dir):
+            os.makedirs(results_dir, exist_ok=True)
+        try:
+            if sys.platform.startswith('darwin'):
+                subprocess.Popen(['open', results_dir])
+            elif os.name == 'nt':
+                os.startfile(results_dir)
+            elif os.name == 'posix':
+                subprocess.Popen(['xdg-open', results_dir])
+            else:
+                QMessageBox.warning(self, "Ошибка", f"Не удалось определить способ открытия папки для вашей ОС.")
+        except Exception as e:
+            QMessageBox.critical(self, "Ошибка", f"Не удалось открыть папку результатов:\n{e}")
 
     # --- Переопределенные методы Qt ---
     def resizeEvent(self, event):

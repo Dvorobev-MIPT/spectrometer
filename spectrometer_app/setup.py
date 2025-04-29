@@ -18,8 +18,8 @@ setup(
     python_requires='>=3.6',
     install_requires=[
         'PyQt5',
-        'numpy',
-        'picamera2'
+        'picamera2',
+        'pyinstaller'   # нужно для сборки исполняемого файла
     ],
     entry_points={
         'console_scripts': [

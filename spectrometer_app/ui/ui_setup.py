@@ -1,8 +1,11 @@
 # spectrometer_app/ui/ui_setup.py
 
 import os
+import sys
+import subprocess
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel,
-                             QLineEdit, QGroupBox, QMenuBar, QAction, QFrame, QComboBox, QSlider)
+                             QLineEdit, QGroupBox, QMenuBar, QAction, QFrame, QComboBox, QSlider,
+                             QFileDialog, QMessageBox)
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator, QDoubleValidator, QIcon
 
@@ -119,9 +122,9 @@ def setup_control_panel(parent, main_layout):
     main_layout.addWidget(control_frame, stretch=1) # добавление в основной layout
 
 def setup_snapshot_button(parent, layout):
-    """Настройка кнопки снимка"""
+    """Настройка кнопки снимка и кнопки открытия папки результатов"""
 
-    # Создание кнопки
+    # Создание кнопки снимка
     parent.snapshot_btn = QPushButton("Сделать снимок")
     
     # Настройка стиля
@@ -137,7 +140,23 @@ def setup_snapshot_button(parent, layout):
     parent.snapshot_btn.clicked.connect(parent.take_and_save_snapshot) 
 
     # Добавление в layout
-    layout.addWidget(parent.snapshot_btn) 
+    layout.addWidget(parent.snapshot_btn)
+    
+    # Создание кнопки открытия папки результатов
+    parent.open_results_btn = QPushButton("Открыть папку результатов")
+    parent.open_results_btn.setStyleSheet("""
+        QPushButton {
+            background-color: #3498db; color: white;
+            font-weight: bold; min-height: 35px; font-size: 13px;
+        }
+        QPushButton:hover { background-color: #2980b9; }
+    """)
+    
+    # Подключение обработчика
+    parent.open_results_btn.clicked.connect(parent.open_results_folder)
+    
+    # Добавление в layout
+    layout.addWidget(parent.open_results_btn)
 
 def setup_lens_controls(parent, layout):
     """Настройка управления позицией линз"""
