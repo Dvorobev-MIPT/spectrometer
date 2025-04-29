@@ -130,10 +130,10 @@ def setup_snapshot_button(parent, layout):
     # Настройка стиля
     parent.snapshot_btn.setStyleSheet("""
         QPushButton {
-            background-color: #4CAF50; color: white;
+            background-color: #7FEB7F; color: white;
             font-weight: bold; min-height: 40px; font-size: 14px;
         }
-        QPushButton:hover { background-color: #45a049; }
+        QPushButton:hover { background-color: ##6AC46A; }
     """)
 
     # Подключение обработчика
