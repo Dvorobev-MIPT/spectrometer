@@ -7,7 +7,7 @@ MAIN_FILE="main.py"
 APP_NAME="spectrometer"
 
 # Путь к иконке (должна быть .ico для Windows или .icns для macOS)
-ICON_FILE="./spectrometer_app/resources/icon.ico"
+ICON_FILE="../../spectrometer_app/resources/icon.ico"
 
 # Папка для итоговой сборки
 OUT_DIR="programm"
@@ -48,7 +48,7 @@ fi
 rm -rf build "$OUT_DIR" *.spec
 
 # Сборка с помощью PyInstaller с оптимизациями и выводом в OUT_DIR
-pyinstaller --name "$APP_NAME" --onefile --windowed $ICON_ARG --strip --clean $UPX_ARG \
+PYTHONOPTIMIZE=2 pyinstaller --name "$APP_NAME" --windowed $ICON_ARG --strip --clean $UPX_ARG \
     $EXCLUDE_MODULES $RUNTIME_TMPDIR --distpath "$OUT_DIR" "$MAIN_FILE"
 
 # Определение расширения исполняемого файла
