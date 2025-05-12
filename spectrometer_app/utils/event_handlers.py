@@ -36,11 +36,11 @@ def change_exposure(app_instance, delta):
 
         # Расчет нового значения с ограничением диапазона
         new_value = current_value + delta
-        new_value = max(0.1, min(30.0, new_value)) # ограничение
+        new_value = max(0.01, min(30.0, new_value)) # ограничение
         
         # Обновление настроек и интерфейса
-        app_instance.current_settings['exposure'] = round(new_value, 1)
-        app_instance.exposure_input.setText(f"{app_instance.current_settings['exposure']:.1f}")
+        app_instance.current_settings['exposure'] = round(new_value, 2)
+        app_instance.exposure_input.setText(f"{app_instance.current_settings['exposure']:.2f}")
 
         # Отправка новых настроек в поток камеры
         if app_instance.camera_connected and app_instance.camera_thread:
@@ -60,10 +60,10 @@ def update_exposure(app_instance):
     try:
         # Парсинг значения и проверка диапазона
         value = float(app_instance.exposure_input.text())
-        app_instance.current_settings['exposure'] = max(0.1, min(30.0, value)) 
+        app_instance.current_settings['exposure'] = max(0.01, min(30.0, value)) 
 
         # Обновление поля ввода (форматирование и округление)
-        app_instance.exposure_input.setText(f"{round(app_instance.current_settings['exposure'], 1):.1f}")
+        app_instance.exposure_input.setText(f"{round(app_instance.current_settings['exposure'], 2):.2f}")
 
         # Отправка новых настроек в поток камеры
         if app_instance.camera_connected and app_instance.camera_thread:
@@ -71,8 +71,8 @@ def update_exposure(app_instance):
             
     except ValueError:
         # Восстановление предыдущего значения при ошибке
-        last_good_value = app_instance.current_settings.get('exposure', 1.0)
-        app_instance.exposure_input.setText(f"{round(last_good_value, 1):.1f}")
+        last_good_value = app_instance.current_settings.get('exposure', 2.0)
+        app_instance.exposure_input.setText(f"{round(last_good_value, 2):.2f}")
         print("Invalid value entered for exposure.")
     except Exception as e:
         print(f"Error updating exposure: {e}")

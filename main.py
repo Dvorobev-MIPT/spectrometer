@@ -21,4 +21,4 @@ if __name__ == "__main__":
 
     window = CameraApp()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec_())   

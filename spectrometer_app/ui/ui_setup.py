@@ -267,16 +267,16 @@ def setup_camera_controls(parent, layout):
     exposure_layout.setSpacing(8)
 
     parent.exposure_input = QLineEdit(f"{parent.current_settings['exposure']:.1f}")
-    parent.exposure_input.setValidator(ClampingDoubleValidator(0.1, 30.0, 1))
+    parent.exposure_input.setValidator(ClampingDoubleValidator(0.01, 30.0, 1))
     parent.exposure_input.returnPressed.connect(parent.update_exposure)
 
     exposure_btn_layout = QHBoxLayout()
     exposure_btn_layout.setSpacing(5)
 
     parent.exposure_decrease_btn = QPushButton("− Уменьшить")
-    parent.exposure_decrease_btn.clicked.connect(lambda: parent.change_exposure(-0.5))
+    parent.exposure_decrease_btn.clicked.connect(lambda: parent.change_exposure(-0.01))
     parent.exposure_increase_btn = QPushButton("Увеличить +")
-    parent.exposure_increase_btn.clicked.connect(lambda: parent.change_exposure(0.5))
+    parent.exposure_increase_btn.clicked.connect(lambda: parent.change_exposure(0.01))
 
     exposure_btn_layout.addWidget(parent.exposure_decrease_btn)
     exposure_btn_layout.addWidget(parent.exposure_increase_btn)

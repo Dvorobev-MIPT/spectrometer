@@ -72,7 +72,7 @@ def take_and_save_snapshot_standalone(parent_window):
         try:
             # доступные режимы сенсора
             sensor_modes = capture_cam.sensor_modes
-
+            
             # Фильтрация режимов с глубиной цвета >= 10 бит (нужно для обработки)
             valid_modes = [m for m in sensor_modes if m.get('bit_depth', 0) >= 10]
 
@@ -120,31 +120,30 @@ def take_and_save_snapshot_standalone(parent_window):
         time.sleep(1)
 
         # Генерация имен файлов формата YYYY-MM-DD_HH-MM-SS
-        timestamp    = time.strftime("%Y-%m-%d_%H-%M-%S")
-        rgb_filename = os.path.join(results_dir, f"{timestamp}.tiff")
-        raw_filename = os.path.join(results_dir, f"{timestamp}.raw") 
+        timestamp = time.strftime("%Y-%m-%d_%H-%M-%S")
+        jpg_filename = os.path.join(results_dir, f"{timestamp}.jpg") 
+        raw_filename = os.path.join(results_dir, f"{timestamp}.dng") 
 
-        request = None # Переменнаая для запроса снимка
+        request = None
 
         try:
             # Захват снимка
             request = capture_cam.capture_request()
-            
-            # Сохранение TIFF изображения максимального качества
-            print("Saving TIFF image...")
-            rgb_image = request.make_image("main")
-            rgb_image.save(rgb_filename, quality=100)
-            print(f"TIFF saved: {rgb_filename}")
 
-            # Сохранение RAW данных
-            print("Saving raw sensor data...")
-            raw_data = request.make_array("raw")
-            raw_data.tofile(raw_filename)
-            print(f"Raw data saved: {raw_filename}")
+            # Сохранение JPEG
+            print("Saving JPEG...")
+            rgb_image = request.make_image("main")
+            rgb_image.save(jpg_filename, format='JPEG', quality=95)  # качество сжатия с потерями от 1 до 100
+            print(f"JPEG saved: {jpg_filename}")
+
+            # Сохранение RAW в формате DNG
+            print("Saving RAW (DNG)...")
+            capture_cam.capture_file(raw_filename, name="raw")  # Используем встроенный метод
+            print(f"RAW (DNG) saved: {raw_filename}")
 
             # Вывод сообщения об успешном сохранении
-            saved_files_msg = (f"RGB: {os.path.basename(rgb_filename)}\n"
-                               f"RAW: {os.path.basename(raw_filename)}")
+            saved_files_msg = (f"JPEG: {os.path.basename(jpg_filename)}\n"
+                               f"RAW:  {os.path.basename(raw_filename)}")
             QMessageBox.information(parent_window, "Успех", f"Изображения сохранены:\n{saved_files_msg}")
 
         except Exception as save_err:
