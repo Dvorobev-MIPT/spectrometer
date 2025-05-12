@@ -9,7 +9,7 @@ DEFAULT_SETTINGS = {
     'awb_mode':      'auto',
     'exposure_mode': 'auto',
     'focus':          1000,   # in mm
-    'exposure':       3.0,    # in seconds
+    'exposure':       3.00,    # in seconds
     'lens1_pos':      0,
     'lens2_pos':      0
 }

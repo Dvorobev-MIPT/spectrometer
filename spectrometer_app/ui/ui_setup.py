@@ -266,8 +266,8 @@ def setup_camera_controls(parent, layout):
     exposure_layout = QVBoxLayout()
     exposure_layout.setSpacing(8)
 
-    parent.exposure_input = QLineEdit(f"{parent.current_settings['exposure']:.1f}")
-    parent.exposure_input.setValidator(ClampingDoubleValidator(0.01, 30.0, 1))
+    parent.exposure_input = QLineEdit(f"{parent.current_settings['exposure']:.2f}")
+    parent.exposure_input.setValidator(ClampingDoubleValidator(0.01, 30.0, 2))
     parent.exposure_input.returnPressed.connect(parent.update_exposure)
 
     exposure_btn_layout = QHBoxLayout()
